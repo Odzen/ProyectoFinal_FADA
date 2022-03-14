@@ -4,12 +4,36 @@ import numpy as np
 Funcion para calcular la solucion optima del problema usando programacion
 dinamica
 '''
-## Funcion principal
+
+'''
+Funcion principal
+'''
+    
 def solve(n, a, b, ab, ba):
-    # Declaracion de variables para la salida del algoritmo (No modificar)
-    time = 0
+    # Declaración de variables para la salida del algoritmo (No modificar)
     #lines = []
-    finalLine = ' '
+
+    T,L = llenarMatrices(n, a, b, ab, ba)
+        
+    #n, time, lines = solucionesOptimas(T,L,n)
+    time, finalLine = solucionesOptimas(T,L,n)
+        
+    # Salida del algoritmo (No modificar)
+    #return n, time, lines
+    return n, time, finalLine
+    #return  T,L
+
+
+'''
+Funciones auxiliares
+'''
+
+## Funcion auxiliar para llenar las matrices T y L
+## T -> Matriz que guardara los valores de la solucion optima (time) para cada subproblema
+## L -> Matriz aux que guardara los valores de la linea de ensamblaje que se escoge
+## en cada subproblema, a partir de L calcularemos la solucion optima
+
+def llenarMatrices(n, a, b, ab, ba):
 
     # Algoritmo con dinamica
     # Array para guardar el valor de la solucion optima en terminos de tiempo
@@ -18,8 +42,6 @@ def solve(n, a, b, ab, ba):
     # Array para guardar la matriz auxiliar de la solucion optima, de la cual
     # luego se calcula la solucion optima
     L = np.empty([2, n], dtype = str)
-    
-    
 
     # Casos base, cuando se analiza la actividad 1
     # Recordar que por facilidad, indexamos empezando 0
@@ -28,17 +50,13 @@ def solve(n, a, b, ab, ba):
     
     L[0,0] = 'a'
     L[1,0] = 'b'
-    
-    print(T)
-    print(L)
-    '''
 
     # Ciclo for de 1 hasta n sin incluirlo, iterando de a 1
     # Populando matriz de valor de solucion optima y matriz auxiliar
     for j in range(1,n):
         # Computar los valores de T[0,j] y L[0,j], fila 1 de cada array
         if T[0,j-1] +  a[j] <= T[1, j-1] + ba[j-1] + a[j]:
-            T[0,j] = T[1, j-1] + a[j]
+            T[0,j] = T[0, j-1] + a[j]
             L[0,j] = 'a'
         else:
             T[0,j] = T[1, j-1] + ba[j-1] + a[j]
@@ -51,30 +69,28 @@ def solve(n, a, b, ab, ba):
         else:
             T[1,j] = T[0, j-1] + ab[j-1] + b[j]
             L[1,j] = 'a'
-        
-        
+
+    return T,L
+
+
+## Funcion auxiliar solucionesOptimas: 
+## Calcula a partir de las matrices el valor de la solucion optima -> Tiempo total
+#  y la solucion optima -> Secuencia de lineas de ensamblaje
+
+def solucionesOptimas(T,L,n):
+    
+    time = 0
+    finalLine = ' '
+    
     # Calcular el valor de la solucion optima (time) y la linea de ensamblaje
     # en donde se termino el proceso, que sirve para calcular luego la 
     # solucion optima
-    if(T[0,n-1] <= T[1,n]):
+    if(T[0,n-1] <= T[1,n-1]):
         time += T[0,n-1]
         finalLine='a'
     else:
         time += T[1,n-1]
         finalLine='b'
-        
     
-    # Fin del algoritmo
-
-    #Salida del algoritmo (No modificar)
-
-    #return n, time, finalLine
-    '''
-    # Test : 
-    return n, a, b, ab, ba
-
-
-## Funciones auxiliares
-
-##Llamado a funcion por pruebas
-#solve(1,2,3,4,5)
+    return time,finalLine
+    
