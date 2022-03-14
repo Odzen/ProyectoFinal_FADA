@@ -16,11 +16,11 @@ def solve(n, a, b, ab, ba):
     T,L = llenarMatrices(n, a, b, ab, ba)
         
     #n, time, lines = solucionesOptimas(T,L,n)
-    time, finalLine = solucionesOptimas(T,L,n)
+    time, lines = solucionesOptimas(T,L,n)
         
     # Salida del algoritmo (No modificar)
     #return n, time, lines
-    return n, time, finalLine
+    return n, time, lines
     #return  T,L
 
 
@@ -81,6 +81,7 @@ def solucionesOptimas(T,L,n):
     
     time = 0
     finalLine = ' '
+    lines=[]
     
     # Calcular el valor de la solucion optima (time) y la linea de ensamblaje
     # en donde se termino el proceso, que sirve para calcular luego la 
@@ -92,5 +93,34 @@ def solucionesOptimas(T,L,n):
         time += T[1,n-1]
         finalLine=1
     
-    return time,finalLine
+    ## Calcular el camino que se escogio para lograr el tiempo minimo
+    print(finalLine)
+    lines.append(finalLine)
+    print(L)
+    for j in range(n-1,0,-1):
+        print(j)
+        finalLine = L[finalLine][j]
+        lines.append(finalLine)      
+    # revertir la lista puesto que nos arroja el camino del ultimo punto
+    # al primero (fin->inicio), y queremos el camino del primer punto
+    # al ultimo (inicio -> fin)
+    lines=list(reversed(lines))
+    
+    # Se llama la funcion auxiliar tranformAB para dar la salida en el formato
+    # requerido
+    lines=transformAB(lines)
+    
+    return time,lines
+
+
+#Funcion auxiliartransformAB, tranform Transformar 0 -> 'a' y 1-> 'b' para lines
+
+def transformAB(lines):
+    linesAux=[]
+    for line in lines:
+        if(line == 1):
+            linesAux.append('b')
+        else:
+            linesAux.append('a')
+    return linesAux
     
