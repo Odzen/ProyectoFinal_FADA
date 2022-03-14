@@ -1,3 +1,5 @@
+import numpy as np
+
 '''
 Funcion para calcular la solucion optima del problema usando programacion
 dinamica
@@ -6,24 +8,30 @@ dinamica
 def solve(n, a, b, ab, ba):
     # Declaracion de variables para la salida del algoritmo (No modificar)
     time = 0
-    lines = []
+    #lines = []
     finalLine = ' '
 
     # Algoritmo con dinamica
-    # Array para guardar el valor de la soluc¨®n optima en terminos de tiempo
-    T = [[], []]
+    # Array para guardar el valor de la solucion optima en terminos de tiempo
+    T = np.zeros([2, n], dtype = int)
     
-    # Array para guardar la matriz auxiliar de la soluci¨®n ¨®ptima, de la cual
+    # Array para guardar la matriz auxiliar de la solucion optima, de la cual
     # luego se calcula la solucion optima
-    L = [[], []]
+    L = np.empty([2, n], dtype = str)
     
+    
+
     # Casos base, cuando se analiza la actividad 1
     # Recordar que por facilidad, indexamos empezando 0
-    T[0,0] = a[1]
-    T[1,0] = b[1]
+    T[0,0] = a[0]
+    T[1,0] = b[0]
     
     L[0,0] = 'a'
     L[1,0] = 'b'
+    
+    print(T)
+    print(L)
+    '''
 
     # Ciclo for de 1 hasta n sin incluirlo, iterando de a 1
     # Populando matriz de valor de solucion optima y matriz auxiliar
@@ -59,8 +67,11 @@ def solve(n, a, b, ab, ba):
     # Fin del algoritmo
 
     #Salida del algoritmo (No modificar)
-    return n, time, finalLine
-    # Test : return n, a, b, ab, ba
+
+    #return n, time, finalLine
+    '''
+    # Test : 
+    return n, a, b, ab, ba
 
 
 ## Funciones auxiliares

@@ -1,11 +1,12 @@
 import dinamica
 #from ..inOut import *
 import inOut
+
 """
 Main para dinamica
 """
 
-#Función main
+#Funcion main
 def main():
     n, a, b, ab, ba = inOut.input()
     resultDinamic = dinamica.solve(n, a, b, ab, ba)
