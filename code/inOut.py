@@ -3,12 +3,14 @@ nombreEscritura = "out"
 
 '''
 input()
-Función para leer el archivo bajo el formato establecido en el proyecto. El
+Funcion para leer el archivo bajo el formato establecido en el proyecto. El
 nombre se cambia en la variable global "nombreLectura". (No modificar)
 '''
 
 def input():
-    with open(nombreLectura+".txt", "r") as f:
+    #Para cambiar la prueba, solo cambie el numero, dependiendo de que prueba
+    #se quiera escoger del directorio pruebas
+    with open("../../Pruebas/Prueba1/"+nombreLectura+".txt", "r") as f:
         content = f.read().split('\n')
         n = int(content[0])
         a = list(map(lambda x: int(x), content[1].split(" ")))
@@ -20,7 +22,7 @@ def input():
 
 '''
 output()
-Función para escribir sobre el archivo según lo solicitado en el proyecto. El
+Funcion para escribir sobre el archivo segun lo solicitado en el proyecto. El
 nombre del archivo se cambia en la variable global "nombreEscritura". (No modificar método)
 '''
 
