@@ -10,7 +10,7 @@ nombre se cambia en la variable global "nombreLectura". (No modificar)
 def input():
     #Para cambiar la prueba, solo cambie el numero, dependiendo de que prueba
     #se quiera escoger del directorio pruebas
-    with open("../../Pruebas/Prueba2/"+nombreLectura+".txt", "r") as f:
+    with open("../../Pruebas/Prueba4/"+nombreLectura+".txt", "r") as f:
         content = f.read().split('\n')
         n = int(content[0])
         a = list(map(lambda x: int(x), content[1].split(" ")))

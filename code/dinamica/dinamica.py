@@ -54,6 +54,11 @@ def llenarMatrices(n, a, b, ab, ba):
     # Ciclo for de 1 hasta n sin incluirlo, iterando de a 1
     # Populando matriz de valor de solucion optima y matriz auxiliar
     for j in range(1,n):
+        #print("Actividad #: ", j)
+        #print(ab[j-1])
+        #print("Linea 1")
+        #print("Por a: ", T[0,j-1] , "+",  a[j] , "=", ) 
+        #print("Por b: ", T[1, j-1] + ba[j-1] + a[j])
         # Computar los valores de T[0,j] y L[0,j], fila 1 de cada array
         if T[0,j-1] +  a[j] <= T[1, j-1] + ba[j-1] + a[j]:
             T[0,j] = T[0, j-1] + a[j]
@@ -61,6 +66,11 @@ def llenarMatrices(n, a, b, ab, ba):
         else:
             T[0,j] = T[1, j-1] + ba[j-1] + a[j]
             L[0,j] = 1
+        
+        
+        #print("Linea 2")
+        #print("Por b: ", T[1,j-1] +  b[j])
+        #print("Por a: ", T[0, j-1] + ab[j-1] + b[j])
         
         # Computar los valores de T[1,j] y L[1,j], fila 2 de cada array
         if T[1,j-1] +  b[j] <= T[0, j-1] + ab[j-1] + b[j]:
@@ -94,13 +104,20 @@ def solucionesOptimas(T,L,n):
         finalLine=1
     
     ## Calcular el camino que se escogio para lograr el tiempo minimo
-    print(finalLine)
+    ## Con un for que va desde n-1 hasta 0 incluyendolo
     lines.append(finalLine)
-    print(L)
-    for j in range(n-1,0,-1):
-        print(j)
-        finalLine = L[finalLine][j]
-        lines.append(finalLine)      
+    
+    for j in range(n-1,-1,-1):
+        # Saltarse la línea n-1, puesto que la necesitamos solo para refereciar
+        # no para alamacenar, no hace parte de la solucion optima
+        #print(finalLine, j) 
+        if(j==n-1):
+            #print("Entro")
+            finalLine = L[finalLine][j]
+        else:
+            finalLine = L[finalLine][j]
+            lines.append(finalLine)   
+          
     # revertir la lista puesto que nos arroja el camino del ultimo punto
     # al primero (fin->inicio), y queremos el camino del primer punto
     # al ultimo (inicio -> fin)
