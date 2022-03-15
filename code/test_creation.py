@@ -1,4 +1,5 @@
 import numpy as np
+import random
 
 """
 Creacion de test automatico
@@ -7,17 +8,31 @@ nombreEscritura="in"
 
 def test_creation(n, numeroTest):
     
+    #Cotas entre las cuales se escogerá el número random para a y b
+    cotaMenor=1
+    cotaMayor=30
+    
+    #Cotas mayor para ab y ba
+    cotaMayorABBA=int(30/2)
+    
+    
     a = np.zeros([n], dtype = int)
     b = np.zeros([n], dtype = int)
     ab = np.zeros([n-1], dtype = int)
     ba = np.zeros([n-1], dtype = int)
     
-    #for i in range(n):
-    #for i in range(n-1):
-        
+    for i in range(n):
+        numeroRandom=random.randint(cotaMenor, cotaMayor)
+        a[i] = numeroRandom
+        numeroRandom=random.randint(cotaMenor, cotaMayor)
+        b[i] = numeroRandom
+    for i in range(n-1):
+        numeroRandom=random.randint(cotaMenor, cotaMayorABBA)
+        ab[i] = numeroRandom
+        numeroRandom=random.randint(cotaMenor, cotaMayorABBA)
+        ba[i] = numeroRandom
         
     output= n, a, b, ab, ba
-    print(numeroTest)
     
     outputForTest(output, numeroTest)
         
@@ -58,4 +73,7 @@ def outputForTest(output, numeroTest):
 
 
 # Llamo funcion principal para la creacion del test
-print(test_creation(6, "6"))
+test_creation(6, "6")
+test_creation(30, "7")
+test_creation(50, "8")
+test_creation(100, "9")
