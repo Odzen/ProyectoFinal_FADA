@@ -14,6 +14,8 @@ su eficiencia y compararlo con la complejidad teorica
 """
 
 """
+Funcion plotting_secuencial
+
 Recibe un numero de pruebas, y crea un numero de pruebas desde 1 hasta
 numero de pruebas, con la ayuda del test_creation:
 Ejemplo si el numero de pruebas es igual a 10, creara 10 pruebas
@@ -21,6 +23,8 @@ la primera con 1 linea de ensamblaje, la segunda con 2 lineas de ensamblajes etc
 
 Para estas pruebas se puede calcular tanto tiempo del algoritmo de dinamica como el de voraz
 Solo se necesitaria cambiar una sola linea
+
+Por ultimo se calcula el tiempo medio y se grafica. numeroPrueba vs Tiempo
 """
 
 def plotting_secuencial(numeroPruebas):
@@ -64,7 +68,13 @@ def plotting_secuencial(numeroPruebas):
 plotting_secuencial(1000)
     
 
+"""
+Funcion plotting_redundante
 
+
+
+Por ultimo se calcula el tiempo medio y se grafica. numeroPrueba vs Tiempo
+"""
 
     
 # voraz vs dinamica, overlaying plots y agregar labels y cambiando el display
