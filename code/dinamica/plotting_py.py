@@ -19,7 +19,7 @@ Funcion plotting_incremental
 Recibe un numero de actividades que pasaran por las dos lineas de ensamblaje, e itera desde 1 hasta
 numero de actividades, con la ayuda del test_creation:
 Ejemplo si el numero de actividades es igual a 10, creara 10 pruebas
-la primera con 1 linea de ensamblaje, la segunda con 2 lineas de ensamblajes etc..
+la primera con 1 actividad, la segunda con 2 actividades etc..
 
 Para estas pruebas se puede calcular tanto tiempo del algoritmo de dinamica como el de voraz
 Solo se necesitaria cambiar una sola linea
@@ -72,7 +72,7 @@ plotting_incremental(1000)
 Funcion plotting_redundante
 
 Recibe un numeroPrueba y un n_veces, el cual es el numero de prueba que se va a ejecutar, de las pruebas
-ya existentes en el directorio de pruebas
+ya existentes en el directorio de pruebas, archivos in.txt
 
 La idea es que se ejecute esa prueba n_veces, poder graficar el comportamiento y sacar tiempo medio
 
