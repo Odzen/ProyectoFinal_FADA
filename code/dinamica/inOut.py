@@ -1,6 +1,5 @@
 nombreLectura = "in"
 nombreEscritura = "out"
-numeroPrueba = "9"
 
 '''
 input()
@@ -12,7 +11,7 @@ nombre se cambia en la variable global "nombreLectura". (No modificar)
 Para cambiar el # de la prueba, solo cambie la variable global 'numeroPrueba', 
 dependiendo de que prueba se quiera escoger del directorio Pruebas/Tests_in_files
 '''
-def input():
+def input(numeroPrueba):
     with open("../../Pruebas/Tests_in_files/"+nombreLectura+numeroPrueba+".txt", "r") as f:
         content = f.read().split('\n')
         n = int(content[0])
@@ -34,7 +33,7 @@ Para la prueba ini.txt el archivo de salida sera outi.txt, siendo i el
 'numeroPrueba', variable global definida anteriormente
 '''
 
-def output(output):
+def output(output, numeroOutput):
     n, time, lines = output
     toWrite = ""
     toWrite += str(n) + "\n"
@@ -42,7 +41,7 @@ def output(output):
     for line in lines:
         toWrite += "\n" + str(line)
 
-    with open("../../Pruebas/outDinamica/"+nombreEscritura+numeroPrueba+".txt", "w") as f:
+    with open("../../Pruebas/outDinamica/"+nombreEscritura+numeroOutput+".txt", "w") as f:
         f.write(toWrite)
 
 

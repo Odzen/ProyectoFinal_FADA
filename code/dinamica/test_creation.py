@@ -10,10 +10,10 @@ def test_creation(n, numeroTest):
     
     #Cotas entre las cuales se escogerá el número random para a y b
     cotaMenor=1
-    cotaMayor=30
+    cotaMayor=100
     
     #Cotas mayor para ab y ba
-    cotaMayorABBA=int(30/2)
+    cotaMayorABBA=int(cotaMayor/2)
     
     
     a = np.zeros([n], dtype = int)
@@ -34,10 +34,11 @@ def test_creation(n, numeroTest):
         
     output= n, a, b, ab, ba
     
-    outputForTest(output, numeroTest)
+    #outputForTest(output, numeroTest)
         
     return output;
 
+# Funcion que escribe el test en formato txt en la carpeta designada
 
 def outputForTest(output, numeroTest):
     n, a, b, ab, ba = output
@@ -77,3 +78,4 @@ test_creation(6, "6")
 test_creation(30, "7")
 test_creation(50, "8")
 test_creation(100, "9")
+test_creation(60, "11")
