@@ -1,6 +1,6 @@
 import pylab as plt
 import dinamica
-#import inOut
+import inOut
 import test_creation
 #way 1
 import time
@@ -14,28 +14,28 @@ su eficiencia y compararlo con la complejidad teorica
 """
 
 """
-Funcion plotting_secuencial
+Funcion plotting_incremental
 
-Recibe un numero de pruebas, y crea un numero de pruebas desde 1 hasta
-numero de pruebas, con la ayuda del test_creation:
-Ejemplo si el numero de pruebas es igual a 10, creara 10 pruebas
+Recibe un numero de actividades que pasaran por las dos lineas de ensamblaje, e itera desde 1 hasta
+numero de actividades, con la ayuda del test_creation:
+Ejemplo si el numero de actividades es igual a 10, creara 10 pruebas
 la primera con 1 linea de ensamblaje, la segunda con 2 lineas de ensamblajes etc..
 
 Para estas pruebas se puede calcular tanto tiempo del algoritmo de dinamica como el de voraz
 Solo se necesitaria cambiar una sola linea
 
-Por ultimo se calcula el tiempo medio y se grafica. numeroPrueba vs Tiempo
+Por ultimo se calcula el tiempo medio y se grafica. lineasEnsamblaje vs Tiempo
 """
 
-def plotting_secuencial(numeroPruebas):
+def plotting_incremental(numeroActividades):
     
-    pruebas = []
+    actividades = []
     times = []
     meanTime = 0
     
-    for prueba in range(1, numeroPruebas):
+    for actividad in range(1, numeroActividades):
         
-        n, a, b, ab, ba = test_creation.test_creation(prueba,prueba)
+        n, a, b, ab, ba = test_creation.test_creation(actividad,actividad)
         #n, a, b, ab, ba = inOut.input()
         
         # En este caso se prueba con dinamica, se podria probar con voraz
@@ -44,7 +44,7 @@ def plotting_secuencial(numeroPruebas):
         end = time.time()
         timeTotalMachine = end - start
         
-        pruebas.append(prueba)
+        actividades.append(actividad)
         times.append(timeTotalMachine)
                 
         #print(decimal.Decimal(timeTotalMachine))
@@ -55,26 +55,65 @@ def plotting_secuencial(numeroPruebas):
     
     # Plot    
     plt.figure('plot1')
-    plt.title('Pruebas secuenciales')
-    plt.xlabel('numero de prueba')
+    plt.title('Actividades incrementales')
+    plt.xlabel('Actividades')
     plt.ylabel('tiempo (s)')
-    plt.plot(pruebas,times)
+    plt.plot(actividades,times)
     
     return meanTime
     
     
         
 # Prueba 1 , secuencial - dinamica - y numero de pruebas = 1000    
-plotting_secuencial(1000)
+plotting_incremental(1000)
     
 
 """
 Funcion plotting_redundante
 
+Recibe un numeroPrueba y un n_veces, el cual es el numero de prueba que se va a ejecutar, de las pruebas
+ya existentes en el directorio de pruebas
 
+La idea es que se ejecute esa prueba n_veces, poder graficar el comportamiento y sacar tiempo medio
+
+Para estas pruebas se puede calcular tanto tiempo del algoritmo de dinamica como el de voraz
+Solo se necesitaria cambiar una sola linea
 
 Por ultimo se calcula el tiempo medio y se grafica. numeroPrueba vs Tiempo
 """
+
+def plotting_redundante(numeroPrueba, n_veces):
+    n, a, b, ab, ba = inOut.input(numeroPrueba)
+    pruebas = []
+    times = []
+    meanTime = 0
+    
+    for prueba in range(1,n_veces):
+        # En este caso se prueba con dinamica, se podria probar con voraz
+        start = time.time()
+        dinamica.solve(n, a, b, ab, ba)
+        end = time.time()
+        timeTotalMachine = end - start
+        
+        pruebas.append(prueba)
+        times.append(timeTotalMachine)
+        
+    #Calcular tiempo medio:
+    meanTime = sum(times) / len(times)
+    print("Tiempo medio para la prueba del archivo in"+numeroPrueba+".txt es: "+ str(meanTime))
+    
+    # Plot    
+    plt.figure('plot2')
+    plt.title('Actividad constante - N veces')
+    plt.xlabel('numero de prueba')
+    plt.ylabel('tiempo (s)')
+    plt.plot(pruebas,times)
+    
+    return meanTime
+
+plotting_redundante("8", 500)
+
+
 
     
 # voraz vs dinamica, overlaying plots y agregar labels y cambiando el display
