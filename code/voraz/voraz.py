@@ -164,22 +164,26 @@ def voraz (a,b,matriz):
     '''
     print (len(verticesCambio))
     
-    while bool(verticesCambio):
+    while (len(verticesCambio) != 0):
 
         pv=posicionInicia
 
         for i in range (0,len(c)):
             solucion.append(matriz[pv][i])
-            
+              
         print (solucion)   
     
         tiempoTotalM = tiempoTotalM + minimo(solucion)
 
        
         c_ = solucion.index(minimo(solucion))
+        
+        print("Vertices cambio antes de sacar")  
         print(verticesCambio)
         print(c_)
         e = verticesCambio.index(vertices[c_])
+        
+        
         print(e)
       
         ruta.append(c_)

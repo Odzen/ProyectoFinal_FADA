@@ -1,6 +1,6 @@
 nombreLectura = "in"
 nombreEscritura = "out"
-numeroPrueba = "5"
+numeroPrueba = "4"
 
 '''
 input()
