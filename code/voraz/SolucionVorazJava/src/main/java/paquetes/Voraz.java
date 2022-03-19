@@ -7,9 +7,11 @@ import java.util.ArrayList;
  * @author cristian
  */
 public class Voraz {
+    private int tiempoTotal;
+    
      /*Indica la actividad  por la cual se empieza
     */
-    public int vertice(ArrayList<Integer> a, ArrayList<Integer> b){
+    public int verticeInicio(ArrayList<Integer> a, ArrayList<Integer> b){
        
         int v_;
         if(Math.min(a.get(0),b.get(0))==a.get(0)){
@@ -25,7 +27,8 @@ public class Voraz {
     */
     public ArrayList<String> voraz(ArrayList<Integer> a, ArrayList<Integer> b,int m[][]){
         
-        int inicia=vertice(a, b);//Indica el numero menos entre los elementos de a y b
+        int inicia=verticeInicio(a, b);//Indica el numero menos entre los elementos de a y b
+        int tiempoTotalM=inicia;
         ArrayList<Integer> ruta = new ArrayList();//Se almacenara el conjunto de vertices que tienen el camino minimo
         ArrayList<Integer> solucion = new ArrayList();//Indica los pesos que tarda un vertice hacia los otros
         ArrayList<Integer> verticesCambio = new ArrayList();//es el conjunto de vertices que ira disminuyendo despues de encontrar la mejor alternativa
@@ -73,6 +76,7 @@ public class Voraz {
           
             int c_;
             int e;
+            tiempoTotalM = tiempoTotalM+minimo(solucion);
             c_= solucion.indexOf(minimo(solucion));//Indica el indice donde se ecuentra el valor minimo de la solucion
             e = verticesCambio.indexOf(vertices.get(c_));
             ruta.add(c_);
@@ -96,6 +100,8 @@ public class Voraz {
         for(int y=0; y<ruta.size();y++){
             System.out.print(ruta.get(y) + ", ");
         }
+        
+        tiempoTotalActividades(tiempoTotalM);
         
         return salidaRuta(ruta);
     }
@@ -128,8 +134,6 @@ public class Voraz {
                 if(x==mitad-1){
                    matriz[x][y]=999; 
                    contador1=0;
-                }else if(x==ultimo){
-                   matriz[x][y]=999;    
                 }else if(y==contador1){
                     matriz[x][y]=completo.get(y);
                 }else if(y==contador2){
@@ -143,6 +147,7 @@ public class Voraz {
             contador2++;
         }
         
+       // System.out.print("contador 1:"+contador1);
          contador2=mitad+1; 
          contador3=0;
          for(int x2=mitad;x2<completo.size();x2++){ 
@@ -178,12 +183,22 @@ public class Voraz {
         
     
    }
+    
+   /*Indica el tiempo que se tarda total de la solucion
+    */
+    
+   public int tiempoTotalActividades(int tiempo){
+       
+       this.tiempoTotal=tiempo;
+       System.out.print("\n"+"tiempo total: " + this.tiempoTotal+"\n");
+       return tiempoTotal;
+               
+   } 
    
     /*Indica si el vertice elegido en el array pertenece a la cadena a o b 
     */
     public ArrayList<String> salidaRuta(ArrayList<Integer> r){
         ArrayList<String> ruta= new ArrayList<String> ();
-        int mitad = r.size()/2;
         for(int i =0; i<r.size();i++){
             if(r.get(i)<r.size()){
                 ruta.add("a");
@@ -212,4 +227,6 @@ public class Voraz {
         
         return minimo;
     }
+    
+    
 }
