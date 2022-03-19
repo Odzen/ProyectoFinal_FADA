@@ -192,7 +192,7 @@ def voraz (a,b,matriz):
         print(division)
         print(len(verticesCambio))
         
-        if c_>division:
+        if e>division:
             verticesCambio.remove(verticesCambio[e])
             verticesCambio.remove(verticesCambio[0])
         else:
