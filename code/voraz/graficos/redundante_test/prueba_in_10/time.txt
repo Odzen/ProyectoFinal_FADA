@@ -1,0 +1,1 @@
+Tiempo medio para la prueba del archivo in10.txt es: 9.220396588465016e-05

@@ -1,0 +1,1 @@
+Tiempo medio para la prueba del archivo in2.txt es: 3.408668992036808e-05

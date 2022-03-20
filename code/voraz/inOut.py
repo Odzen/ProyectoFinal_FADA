@@ -1,6 +1,5 @@
 nombreLectura = "in"
 nombreEscritura = "out"
-numeroPrueba = "4"
 
 '''
 input()
@@ -8,11 +7,7 @@ Funcion para leer el archivo bajo el formato establecido en el proyecto. El
 nombre se cambia en la variable global "nombreLectura". (No modificar)
 '''
 
-'''
-Para cambiar el # de la prueba, solo cambie la variable global 'numeroPrueba', 
-dependiendo de que prueba se quiera escoger del directorio Pruebas/Tests_in_files
-'''
-def input():
+def input(numeroPrueba):
     with open("../../Pruebas/Tests_in_files/"+nombreLectura+numeroPrueba+".txt", "r") as f:
         content = f.read().split('\n')
         n = int(content[0])
@@ -34,7 +29,7 @@ Para la prueba ini.txt el archivo de salida sera outi.txt, siendo i el
 'numeroPrueba', variable global definida anteriormente
 '''
 
-def output(output):
+def output(output, numeroPrueba):
     n, time, lines = output
     toWrite = ""
     toWrite += str(n) + "\n"

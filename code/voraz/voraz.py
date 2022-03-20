@@ -150,8 +150,8 @@ def voraz (a,b,matriz):
         posicionInicia = a.index(inicia)
         verticesCambio.remove(verticesCambio[posicionInicia])
         verticesCambio.remove(verticesCambio[division])
-    print(posicionInicia)
-    print(verticesCambio)
+    #print(posicionInicia)
+    #print(verticesCambio)
     
     ruta.append(posicionInicia)
     '''
@@ -162,7 +162,7 @@ def voraz (a,b,matriz):
         verticesCambio.remove(verticesCambio[posicionInicia])
         verticesCambio.remove(verticesCambio[division])
     '''
-    print (len(verticesCambio))
+    #print (len(verticesCambio))
     
     while (len(verticesCambio) != 0):
 
@@ -171,26 +171,26 @@ def voraz (a,b,matriz):
         for i in range (0,len(c)):
             solucion.append(matriz[pv][i])
               
-        print (solucion)   
+        #print (solucion)   
     
         tiempoTotalM = tiempoTotalM + minimo(solucion)
 
        
         c_ = solucion.index(minimo(solucion))
         
-        print("Vertices cambio antes de sacar")  
-        print(verticesCambio)
-        print(c_)
+        #print("Vertices cambio antes de sacar")  
+        #print(verticesCambio)
+        #print(c_)
         e = verticesCambio.index(vertices[c_])
         
         
-        print(e)
+        #print(e)
       
         ruta.append(c_)
         
         division = int((len(verticesCambio)/2)-1)
-        print(division)
-        print(len(verticesCambio))
+        #print(division)
+        #print(len(verticesCambio))
         
         if e>division:
             verticesCambio.remove(verticesCambio[e])
@@ -206,6 +206,6 @@ def voraz (a,b,matriz):
         
     
       
-    print(verticesCambio)
+    #print(verticesCambio)
     
     return tiempoTotalM,salidaRuta(ruta)

@@ -1,5 +1,5 @@
 import pylab as plt
-import dinamica
+import voraz
 import inOut
 import test_creation
 #way 1
@@ -21,10 +21,10 @@ numero de actividades, con la ayuda del test_creation:
 Ejemplo si el numero de actividades es igual a 10, creara 10 pruebas
 la primera con 1 actividad, la segunda con 2 actividades etc..
 
-Para estas pruebas se puede calcular tanto tiempo del algoritmo de dinamica
+Para estas pruebas se puede calcular tanto tiempo del algoritmo de voraz como el de voraz
 Solo se necesitaria cambiar una sola linea
 
-Por ultimo se calcula el tiempo medio y se grafica. activides vs Tiempo
+Por ultimo se calcula el tiempo medio y se grafica. actividades vs Tiempo
 """
 
 def plotting_incremental(numeroActividades):
@@ -37,9 +37,9 @@ def plotting_incremental(numeroActividades):
         
         n, a, b, ab, ba = test_creation.test_creation(actividad,actividad)
         
-        # En este caso se prueba con dinamica
+        # En este caso se prueba con voraz
         start = time.time()
-        dinamica.solve(n, a, b, ab, ba)
+        voraz.solve(n, a, b, ab, ba)
         end = time.time()
         timeTotalMachine = end - start
         
@@ -53,7 +53,7 @@ def plotting_incremental(numeroActividades):
     
     # Plot    
     plt.figure('plot1')
-    plt.title('Actividades incrementales - dinamica')
+    plt.title('Actividades incrementales - Voraz')
     plt.xlabel('Actividades')
     plt.ylabel('tiempo (s)')
     plt.plot(actividades,times)
@@ -62,7 +62,7 @@ def plotting_incremental(numeroActividades):
     
     
         
-# Prueba 1 , secuencial - dinamica - y numero de pruebas = 300    
+# Prueba 1 , secuencial - voraz - y numero de pruebas = 300    
 plotting_incremental(300)
 
 
@@ -74,7 +74,7 @@ ya existentes en el directorio de pruebas, archivos in.txt
 
 La idea es que se ejecute esa prueba n_veces, poder graficar el comportamiento y sacar tiempo medio
 
-Para estas pruebas se puede calcular tanto tiempo del algoritmo de dinamica como el de voraz
+Para estas pruebas se puede calcular tanto tiempo del algoritmo de voraz como el de voraz
 Solo se necesitaria cambiar una sola linea
 
 Por ultimo se calcula el tiempo medio y se grafica. numeroPrueba vs Tiempo
@@ -87,9 +87,9 @@ def plotting_redundante(numeroPrueba, n_veces):
     meanTime = 0
     
     for prueba in range(1,n_veces):
-        # En este caso se prueba con dinamica
+        # En este caso se prueba con voraz
         start = time.time()
-        dinamica.solve(n, a, b, ab, ba)
+        voraz.solve(n, a, b, ab, ba)
         end = time.time()
         timeTotalMachine = end - start
         
@@ -102,7 +102,7 @@ def plotting_redundante(numeroPrueba, n_veces):
     
     # Plot    
     plt.figure('plot2')
-    plt.title('Actividad constante - N veces - dinamica')
+    plt.title('Actividad constante - N veces - Voraz')
     plt.xlabel('numero de prueba')
     plt.ylabel('tiempo (s)')
     plt.plot(pruebas,times)

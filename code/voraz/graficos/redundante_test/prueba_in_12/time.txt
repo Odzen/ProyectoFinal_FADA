@@ -1,0 +1,1 @@
+Tiempo medio para la prueba del archivo in12.txt es: 0.0004397365516555572

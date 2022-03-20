@@ -1,0 +1,1 @@
+Tiempo medio para la prueba del archivo in3.txt es: 0.00018018376612233256
