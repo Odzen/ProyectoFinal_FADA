@@ -10,16 +10,11 @@ Funcion principal
 '''
     
 def solve(n, a, b, ab, ba):
-    # Declaración de variables para la salida del algoritmo (No modificar)
-    #lines = []
 
     T,L = llenarMatrices(n, a, b, ab, ba)
         
-    #n, time, lines = solucionesOptimas(T,L,n)
     time, lines = solucionesOptimas(T,L,n)
         
-    # Salida del algoritmo (No modificar)
-    #return n, time, lines
     return n, time, lines
     #return  T,L
 
@@ -54,11 +49,6 @@ def llenarMatrices(n, a, b, ab, ba):
     # Ciclo for de 1 hasta n sin incluirlo, iterando de a 1
     # Populando matriz de valor de solucion optima y matriz auxiliar
     for j in range(1,n):
-        #print("Actividad #: ", j)
-        #print(ab[j-1])
-        #print("Linea 1")
-        #print("Por a: ", T[0,j-1] , "+",  a[j] , "=", ) 
-        #print("Por b: ", T[1, j-1] + ba[j-1] + a[j])
         # Computar los valores de T[0,j] y L[0,j], fila 1 de cada array
         if T[0,j-1] +  a[j] <= T[1, j-1] + ba[j-1] + a[j]:
             T[0,j] = T[0, j-1] + a[j]
@@ -67,10 +57,6 @@ def llenarMatrices(n, a, b, ab, ba):
             T[0,j] = T[1, j-1] + ba[j-1] + a[j]
             L[0,j] = 1
         
-        
-        #print("Linea 2")
-        #print("Por b: ", T[1,j-1] +  b[j])
-        #print("Por a: ", T[0, j-1] + ab[j-1] + b[j])
         
         # Computar los valores de T[1,j] y L[1,j], fila 2 de cada array
         if T[1,j-1] +  b[j] <= T[0, j-1] + ab[j-1] + b[j]:
@@ -110,9 +96,7 @@ def solucionesOptimas(T,L,n):
     for j in range(n-1,-1,-1):
         # Saltarse la línea n-1, puesto que la necesitamos solo para refereciar
         # no para alamacenar, no hace parte de la solucion optima
-        #print(finalLine, j) 
         if(j==n-1):
-            #print("Entro")
             finalLine = L[finalLine][j]
         else:
             finalLine = L[finalLine][j]

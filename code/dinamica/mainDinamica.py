@@ -16,8 +16,6 @@ def main():
     
     resultDinamic = dinamica.solve(n, a, b, ab, ba)
     inOut.output(resultDinamic, numeroPrueba)
-        
-    
     
     #Resturn test, antes de escribir en archivo
     # For test

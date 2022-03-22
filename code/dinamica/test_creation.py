@@ -74,8 +74,8 @@ def outputForTest(output, numeroTest):
 
 
 # Llamo funcion principal para la creacion del test
-test_creation(6, "6")
-test_creation(30, "7")
-test_creation(50, "8")
-test_creation(100, "9")
-test_creation(60, "11")
+test_creation(6, "13")
+test_creation(30, "14")
+test_creation(50, "15")
+test_creation(100, "16")
+test_creation(60, "17")
